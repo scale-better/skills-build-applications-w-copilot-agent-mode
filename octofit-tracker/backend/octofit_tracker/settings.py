@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
+from corsheaders.defaults import default_headers
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -54,13 +55,18 @@ MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
 ]
 
-CORS_ALLOW_ORIGINS = [
-    'https://friendly-succotash-jj7xj6rw7979hpwqg-3001.app.github.dev',
-    'http://localhost:3000',
+# Add these CORS settings
+CORS_ALLOW_ALL_ORIGINS = True  # For development only
+CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_METHODS = ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"]
+CORS_ALLOW_HEADERS = list(default_headers) + [
+    "content-type",
 ]
 
-CORS_ALLOW_METHODS = ["GET", "POST", "PUT", "DELETE", "OPTIONS"]
-CORS_ALLOW_HEADERS = ["*"]
+CORS_ALLOW_ORIGINS = [
+    'https://friendly-succotash-jj7xj6rw7979hpwqg-3000.app.github.dev',
+    'http://localhost:3000',
+]
 
 ROOT_URLCONF = "octofit_tracker.urls"
 

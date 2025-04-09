@@ -6,7 +6,12 @@ function Users() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch('https://friendly-succotash-jj7xj6rw7979hpwqg-8000.app.github.dev/api/users/')
+    fetch('https://friendly-succotash-jj7xj6rw7979hpwqg-8000.app.github.dev/api/users/', {
+        credentials: 'include',
+        headers: {
+          'Accept': 'application/json'
+        }
+      })
       .then(response => {
         if (!response.ok) {
           throw new Error(`Network response was not ok: ${response.status}`);
