@@ -1,10 +1,16 @@
 from djongo import models
 
+class UserManager(models.Manager):
+    def get_queryset(self):
+        return super().get_queryset().all()
+
 class User(models.Model):
     _id = models.ObjectIdField()
     username = models.CharField(max_length=100)
     email = models.EmailField(unique=True)
     password = models.CharField(max_length=100)
+
+    objects = UserManager()
 
 class Team(models.Model):
     _id = models.ObjectIdField()

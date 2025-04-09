@@ -25,7 +25,7 @@ SECRET_KEY = "django-insecure-gjspp@*2br(o(xjkzr28v6qn_^i2w#a4m*wh5po&5)9_w&z_^j
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'friendly-succotash-jj7xj6rw7979hpwqg-8000.app.github.dev']
 
 
 # Application definition
@@ -82,11 +82,13 @@ WSGI_APPLICATION = "octofit_tracker.wsgi.application"
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
-    "default": {
-        "ENGINE": "djongo",
-        "NAME": "octofit_db",
-        "HOST": "localhost",
-        "PORT": 27017,
+    'default': {
+        'ENGINE': 'djongo',
+        'NAME': 'octofit_db',
+        'CLIENT': {
+            'host': 'localhost',
+            'port': 27017,
+        },
     }
 }
 
